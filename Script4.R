@@ -17,6 +17,7 @@ act.labels <- c("WALKING", "WALKING_UPSTAIRS",         # create activity labels
 x_all[,2] <- factor(x_all[,2],labels=act.labels)       # label activities
 x_all[,1] <- as.factor(x_all[,1])                      # subjects as factors
 save(x_all,file=paste(PjDir,"x_All.RData", sep="/"))   # save object
+write.table(x_all, "x_All.txt", sep=",")               # save it as a txt file
 #
 # Step 2 - Creates a second data set
 print("Step 2 - Creating a second data set")
@@ -30,6 +31,7 @@ means.Sub.Act <- means.Sub.Act[order(fac.as.numeric(means.Sub.Act[,1]),
                                      as.character(means.Sub.Act[,2])),]
 View(means.Sub.Act)    # check it out
 save(means.Sub.Act,file=paste(PjDir,"Means.Subj.Act.RData", sep="/")) # save it
+write.table(means.Sub.Act, "Means_Subj_Act.txt", sep=",") # save it as a txt file
 setwd(PjDir)           # reset current dir to Project
 # end of job
 print("End of Job.")
