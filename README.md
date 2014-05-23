@@ -17,4 +17,4 @@ N. File / Description
 6. AuxFunctions.R / R functions written specifically to solve the problem
 7. x_All.RData / R object containing a new data set with train and test data combined as requested
 8. Means.Subj.Act.RData / R obj. Data set with averages of all variables grouped by subject and activity as requested
-9. ReadMe.md / This file
+9. ReadMe.md / This file 
