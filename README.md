@@ -9,6 +9,7 @@ Repo contents
 -------------
 
 N. File / Description
+
 1. run_aalysis.R / main script.
 2. Script1.R / Unzips downloaded files and access documentation.
 3. Script2.R / Creates a new test data set with selected features, Subjects and Activities.
