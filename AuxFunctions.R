@@ -17,15 +17,15 @@ read.all <- function(func="table", type=".", list=FALSE, ...) {
     dslist <- list()                             # empty list to hold results
     for (i in 1:length(fl)) {                       # read loop
         # fn <- strsplit(fl[i], c(".txt"))          # ??? no needed anymore
-        print(paste(">>> Reading file...", fl[i]))  # it could take time...
+        cat(paste("read_all>>> Reading file...", fl[i], "\n"))  # it could take time...
         ds <- read.func(fl[i], ...)                 # read file
         dslist[[i]] <- ds                           # store results
     } 
-    print(paste(i, " files read."))              # inform number of files read
+    cat(paste("read_all>>>", i, " files read.\n"))  # inform number of files read
     dslist                                       # go home
 }
 # 
-fac.as.numeric <- function(x) {
+fac.as.numeric <- function(x) {    
     as.numeric(as.character(x))
 }
 
@@ -47,16 +47,16 @@ read_seg <- function(filename, nrecs=1, limit=nrecs,
             nrecs <- limit - recs.read
         }
         seg <- seg + 1                                    # point to next segment
-        cat("Reading segment number: ", seg, "\n")         # keep me updated
+        cat("read_seg> Reading segment number: ", seg, "\n")         # keep me updated
         obj <- read.fwf(filename, widths, n=nrecs, skip=recs.read) 
         colnames(obj) <- feat.names                       # apply features labels
         objsel <- obj[,feat.select]                        # select features from df
         lobj[[seg]] <- objsel                             # store obj in list         
         rm(obj)                                           # remove object
         recs.read <- recs.read + nrecs                    # increment counter
-        cat("Segment ", seg, "done. Recs read so far: ", recs.read, "\n")
+        cat("read_seg> Segment ", seg, "done. Recs read so far: ", recs.read, "\n")
     }
-    cat("Job done. ", seg, " segments with ", recs.read, " records read.", "\n")
+    cat("read_seg> Job done. ", seg, " segments with ", recs.read, " records read.", "\n")
     return(lobj)
 }
 
@@ -67,7 +67,7 @@ join.list <- function(list, fun=FALSE) {
         fun <- (function(x) x)
     }
     if (length(list) < 2) {
-        print("Invalid list.")
+        cat("Invalid list. \n")
         return(NULL)
     } else {
         dest <- fun(list[[1]])
